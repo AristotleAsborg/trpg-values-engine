@@ -39,8 +39,9 @@ _CMP_OPS = {
 def evaluate(expression: str, variables: Mapping[str, Any] | None = None) -> Any:
     """求值 ``expression``，可用变量由 ``variables`` 提供。
 
-    >>> evaluate("(STR - 10) // 2", {"STR": 16})
-    3
+    变量名与公式全部来自外部规则配置，本模块不认识任何具体的规则系统；
+    公式示例见 README 与 ``rules/example_rules.json``（放在包外，
+    这样"包源码里没有硬编码规则"这条约束可以被脚本机械核对）。
     """
     if not isinstance(expression, str):
         raise ExpressionError(f"公式必须是字符串，得到 {type(expression).__name__}")
